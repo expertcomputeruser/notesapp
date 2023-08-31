@@ -1,36 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import {Route, Routes} from "react-router-dom";
 import './App.css';
+import SiteIndex from "./views/SiteIndex";
+import RemindersIndex from "./views/RemindersIndex";
+import Navbar from "./components/Navbar";
 
 
-interface demoResponseJson {
-    headerText: string,
-    bodyText: string,
-}
 function App() {
-
-    const [json, setJson] = useState<demoResponseJson>();
-
-    async function fetchContent() {
-        const response = await fetch("/api/")
-        return await response.json();
-    }
-
-    useEffect(() => {
-        fetchContent().then(res => setJson(res));
-    }, []);
-
-
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>{json?.headerText}</h1>
-          <p>{json?.bodyText}</p>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<SiteIndex />} />
+                <Route path="/reminders" element={<RemindersIndex />} />
+            </Routes>
+        </>
+    )
 }
 
 export default App;
