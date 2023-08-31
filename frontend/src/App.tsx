@@ -13,15 +13,11 @@ function App() {
 
     async function fetchContent() {
         const response = await fetch("/api/")
-        console.log("fetchContent", response);
         return await response.json();
     }
 
     useEffect(() => {
-        fetchContent().then((res) => {
-            console.log("useEffect", res)
-            setJson(res);
-        })
+        fetchContent().then(res => setJson(res));
     }, []);
 
 
