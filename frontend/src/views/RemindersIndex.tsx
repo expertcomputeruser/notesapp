@@ -1,23 +1,26 @@
 import React, {useEffect, useState} from "react";
 import {DemoJson} from "../jsonmodels/DemoJson";
+import Note from "../jsonmodels/Note";
 
 function RemindersIndex() {
-    const [json, setJson] = useState<DemoJson>();
+    const [json, setJson] = useState<Note>();
 
-    async function fetchContent() {
-        const response = await fetch("/api/")
+    async function fetchContent(url: string) {
+        const response = await fetch(url)
         return await response.json();
     }
 
     useEffect(() => {
-        fetchContent().then(res => setJson(res));
+        fetchContent("/api/testnote").then(res => setJson(res));
     }, []);
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>{json?.headerText}</h1>
-                <p>{json?.bodyText}</p>
+                <h1>{json?.name}</h1>
+                <p>{json?.text}</p>
+                <p>{json?.createdOn.toLocaleString()}</p>
+                <p>{json?.reminder}</p>
             </header>
         </div>
     );
