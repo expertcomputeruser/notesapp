@@ -10,14 +10,14 @@ function SiteIndex() {
     }
 
     useEffect(() => {
-        fetchContent().then(res => setJson(res));
+        fetchContent().then(setJson);
     }, []);
 
     return (
         <div className="App">
             <header className="App-header">
-                <h1>This is the main site index</h1>
-                <p>It's rather dry...</p>
+                <h1>{json?.headerText}</h1>
+                <p>{json?.bodyText}</p>
             </header>
         </div>
     );

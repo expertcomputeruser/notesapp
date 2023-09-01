@@ -8,7 +8,7 @@ function Navbar() {
                   <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                  <NavLink to="/reminders">Reminders</NavLink>
+                  <NavLink to="/notes">Notes</NavLink>
               </li>
               <li>
                   <NavLink to="/broken">Broken route</NavLink>

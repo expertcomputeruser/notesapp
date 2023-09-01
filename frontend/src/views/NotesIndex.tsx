@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {DemoJson} from "../jsonmodels/DemoJson";
 import Note from "../jsonmodels/Note";
 
-function RemindersIndex() {
+function NotesIndex() {
     const [json, setJson] = useState<Note>();
 
     async function fetchContent(url: string) {
@@ -11,7 +10,7 @@ function RemindersIndex() {
     }
 
     useEffect(() => {
-        fetchContent("/api/testnote").then(res => setJson(res));
+        fetchContent("/api/testnote").then(setJson);
     }, []);
 
     return (
@@ -26,4 +25,4 @@ function RemindersIndex() {
     );
 }
 
-export default RemindersIndex;
+export default NotesIndex;
